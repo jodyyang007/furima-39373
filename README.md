@@ -4,11 +4,12 @@
 
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
-| name               | string | null: false |
+| nickname           | string | null: false |
 | email              | string | null: false ,Unique:true|
 | encrypted_password | string | null: false |
-| nickname           | string | null: false |
-| address            | text   | null: false |
+| full name          | string | null: false |
+| full name_kana     | string | null: false |
+| birthday           | date   | null: false |
 
 ### Association
 
@@ -18,12 +19,15 @@
 
 ## items テーブル
 
-| Column     | Type      | Options                       |
-| ------     | ------    | ----------------------------- |
-| title      | string    | null: false                   |
-| category   | string    | null: false                   |
-| price      | integer   | null: false                   |
-| user       | references| null: false,foreign_key: true |
+| Column              | Type     | Options     |
+| ------------------ | ------    | ----------- |
+| title              | string    | null: false |
+| category           | string    | null: false |
+| condition          | string    | null: false |
+| shipping_fee_burden| string    | null: false |
+| prefecture         | string    | null: false |
+| estimated_shipping | string    | null: false |
+
 
 
 ### Association
@@ -36,8 +40,6 @@
 
 | Column      | Type       | Options                        |
 | -------     | ---------- | ------------------------------ |
-| info        | text       | null: false                    |
-| price       | integer    | null: false                    |
 | item        | references | null: false,foreign_key: true  |
 | user        | references | null: false,foreign_key: true  |
 
@@ -51,12 +53,17 @@
 
 ## shipping テーブル
 
-| Column      | Type       | Options                        |
-| -------     | ---------- | ------------------------------ |
-| address     | text       | null: false                    |
-| user        | references | null: false,foreign_key: true  |
-| order       | references | null: false,foreign_key: true  |
-| item        | references | null: false,foreign_key: true  |
+| Column        | Type       | Options                        |
+| -------       | ---------- | ------------------------------ |
+| postal_code   | text       | null: false                    |
+| prefecture    | text       | null: false                    |
+| city          | text       | null: false                    |
+| street_address| text       | null: false                    |
+| building_name | 
+| phone_number  | text       | null: false                      |
+| user          | references | null: false,foreign_key: true    |
+| order         | references | null: false,foreign_key: true    |
+| item          | references | null: false,foreign_key: true    |
 
 
 - belongs_to :order
