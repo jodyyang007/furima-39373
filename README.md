@@ -5,7 +5,7 @@
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
 | nickname           | string | null: false |
-| email              | string | null: false ,Unique:true|
+| email              | string | null: false ,unique:true|
 | encrypted_password | string | null: false |
 | first_name         | string | null: false |
 | last_name          | string | null: false |
@@ -28,7 +28,7 @@
 | condition_id          | integer    | null: false |
 | shipping_fee_burden_id| integer    | null: false |
 | prefecture_id         | integer    | null: false |
-| estimated_shipping _id| integer    | null: false |
+| estimated_shipping_id | integer    | null: false |
 | comment               | text       | null: false |
 | user                  | references | null: false,foreign_key: true  |
 | price                 | integer    | null: false |
@@ -63,8 +63,8 @@
 | postal_code       | string     | null: false                    |
 | prefecture_id     | integer    | null: false                    |
 | city_id           | string     | null: false                    |
-| street_address_id | string     | null: false                    |
-| building_name_id  | 
+| street_address    | string     | null: false                    |
+| building_name     | 
 | phone_number      | string     | null: false                    |
 | order             | references | null: false,foreign_key: true  |
 
