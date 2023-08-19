@@ -37,7 +37,7 @@
 ### Association
 
 - belongs_to :user
-- has_one : order
+- has_one :order
 
 
 
@@ -52,7 +52,7 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_one : shipping
+- has_one :shipping
 
 
 
@@ -64,7 +64,7 @@
 | prefecture_id     | integer    | null: false                    |
 | city_id           | string     | null: false                    |
 | street_address    | string     | null: false                    |
-| building_name     | 
+| building_name     | string     | 
 | phone_number      | string     | null: false                    |
 | order             | references | null: false,foreign_key: true  |
 
