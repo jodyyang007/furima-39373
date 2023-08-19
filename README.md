@@ -62,7 +62,7 @@
 | ----------------- | ---------- | ------------------------------ |
 | postal_code       | string     | null: false                    |
 | prefecture_id     | integer    | null: false                    |
-| cit_id            | string     | null: false                    |
+| city_id           | string     | null: false                    |
 | street_address_id | string     | null: false                    |
 | building_name_id  | 
 | phone_number      | string     | null: false                    |
