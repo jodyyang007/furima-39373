@@ -31,6 +31,7 @@
 | estimated_shipping _id| integer    | null: false |
 | comment               | text       | null: false |
 | user                  | references | null: false,foreign_key: true  |
+| price                 | integer    | null: false |
 
 
 ### Association
@@ -59,7 +60,7 @@
 
 | Column        | Type       | Options                        |
 | -------       | ---------- | ------------------------------ |
-| postal_code   | string     | null: false                    |
+| postal_code   | references | null: false,foreign_key: true  |
 | prefecture    | references | null: false,foreign_key: true  |
 | city          | string     | null: false                    |
 | street_address| string     | null: false                    |
