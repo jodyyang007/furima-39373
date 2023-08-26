@@ -5,25 +5,15 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
  validates :nickname, presence: true
- validates :first_name, presence: true
- validates :last_name, presence: true
- validates :first_name_kana, presence: true,format: {with: /\A[ァ-ヶー]+\z/, message: "is invalid. Input full-width katakana characters."}
- validates :last_name_kana, presence: true,format: {with: /\A[ァ-ヶー]+\z/, message: "is invalid. Input full-width katakana characters."}
+  validates :first_name, presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: "is invalid. Input full-width characters." } 
+  validates :last_name, presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: "is invalid. Input full-width characters." }
+  validates :first_name_kana, presence: true, format: { with: /\A[ァ-ヶー]+\z/, message: "is invalid. Input full-width katakana characters." }
+  validates :last_name_kana, presence: true, format: { with: /\A[ァ-ヶー]+\z/, message: "is invalid. Input full-width katakana characters." }
  validates :birthday, presence: true
-
-
- validate :validate_full_width_name
  
- def validate_full_width_name
-  unless full_width?(last_name) && full_width?(first_name)
-    errors.add(:last_name, "is invalid. Input full-width characters")
-    errors.add(:first_name, "is invalid. Input full-width characters")
-  end
-end
+  validates :password, format: {
+    with: /\A(?=.*?[a-zA-Z])(?=.*?\d)[a-zA-Z\d]{6,}\z/,
+    message: "is invalid. Include both letters and numbers"
+  }
 
-def full_width?(text)
-  text =~ /\A[ぁ-んァ-ヶ一-龥々ー]+\z/
-end
- validates :password, format: { with: /\A(?=.*?[a-zA-Z])(?=.*?\d)[a-zA-Z\d]{6,}\z/,
-   message: "is invalid. Include both letters and numbers" }
 end
