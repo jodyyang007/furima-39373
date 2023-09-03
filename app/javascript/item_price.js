@@ -12,7 +12,8 @@ window.addEventListener('load', function(){
 
     const addProfitDom = document.getElementById("profit");
     const profit = inputValue - roundedTax;
-    addProfitDom.innerHTML = `${profit}`;
+    const roundedProfit = Math.floor(profit);
     
+    addProfitDom.innerHTML = `${roundedProfit}`;
   });
 });
