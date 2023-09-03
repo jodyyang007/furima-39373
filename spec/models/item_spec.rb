@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Item, type: :model do
   before do
-    @item = FactoryBot.build(:item)
+    @user = FactoryBot.create(:user)
+    @item = FactoryBot.build(:item, user: @user)
   end
 
   describe '出品する' do
@@ -10,6 +11,7 @@ RSpec.describe Item, type: :model do
       
       it "titleとimage、category、condition、shipping_fee_burden、prefecture、estimated_shipping、comment、priceが存在すれば出品できる" do
       expect(@item).to be_valid
+      expect(@item.image).not_to be_nil
       end
     end
 
