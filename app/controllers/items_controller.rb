@@ -24,11 +24,11 @@ else
 end
 end
 
-def purchase
+# def purchase
 
-  self.sold_out = true
+#   self.sold_out = true
  
-end
+# end
 
 
   private
