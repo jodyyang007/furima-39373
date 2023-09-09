@@ -128,8 +128,8 @@
     </div>
     <ul class='item-lists'>
       <% @items.each do |item| %>
-      <%= link_to item_path(item), class: 'item-show' do %>
       <li class='list'>
+       <%= link_to item_path(item) do %>
         <div class='item-img-content'>
           <%= image_tag item.image, class: "item-img" %>
           <div class='sold-out'>
@@ -148,11 +148,10 @@
             </div>
           </div>
         </div>
-         </li>
+        </li>
         <% end %>
         <% end %>
-     
-      <li class='list'>  
+        
       <% if @items.empty? %>
         <%= link_to '#' do %>
         <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>

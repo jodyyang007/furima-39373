@@ -24,6 +24,12 @@ else
 end
 end
 
+def purchase
+
+  self.sold_out = true
+ 
+end
+
 
   private
 
