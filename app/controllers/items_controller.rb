@@ -5,6 +5,10 @@ def index
   @items = Item.order(created_at: :desc)
 end 
   
+def show
+  @item = Item.find(params[:id])
+end
+
 def new
  @item = Item.new
 end
@@ -19,6 +23,12 @@ else
   render :new
 end
 end
+
+# def purchase
+
+#   self.sold_out = true
+ 
+# end
 
 
   private
