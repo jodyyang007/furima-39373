@@ -4,8 +4,17 @@ class ItemsController < ApplicationController
 
 def index 
   @items = Item.order(created_at: :desc)
-end 
-  
+end
+
+
+def show
+  @item = Item.find(params[:id])
+  if current_user != @item.user
+    redirect_to new_user_session_path
+  end
+end
+
+
 def edit
   if current_user != @item.user
     redirect_to root_path
