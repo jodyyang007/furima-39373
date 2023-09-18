@@ -7,7 +7,7 @@ RSpec.describe OrderShipping, type: :model do
 
   describe '住所保存できる' do
     context '住所保存できる場合' do
-      it "postal_codeとprefecture、city、street_address、phone_numberが存在すれば保存できる" do
+      it "postal_codeとprefecture、city、street_address、phone_number,tokenが存在すれば保存できる" do
         expect(@order_shipping).to be_valid
       end
     end
@@ -67,6 +67,14 @@ RSpec.describe OrderShipping, type: :model do
         @order_shipping.valid?
         expect(@order_shipping.errors.full_messages).to include("User can't be blank")
       end
+
+      it "tokenが空では登録できないこと" do
+        @order_shipping.token = nil
+        @order_shipping.valid?
+        expect(@order_shipping.errors.full_messages).to include("Token can't be blank")
+      end
+
+
     end
   end
 end
