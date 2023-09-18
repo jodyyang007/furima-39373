@@ -7,7 +7,9 @@ class Item < ApplicationRecord
   belongs_to :estimated_shipping
 
   belongs_to :user
+  has_one :order
   has_one_attached :image
+  
 
   validates :title, presence: { message: "can't be blank " }
   validates :image, presence: { message: "can't be blank" }
@@ -31,4 +33,10 @@ class Item < ApplicationRecord
   validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
 
   attribute :sold_out, default: false
+
+  def mark_as_sold_out
+    update(sold_out: true)
+  end
+
+
 end

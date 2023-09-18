@@ -8,9 +8,11 @@ class OrdersController < ApplicationController
     def create
     @item = Item.find(params[:item_id])
     @order_shipping = OrderShipping.new(order_params)
+    @order = Order.new(item_id: @item.id, user_id: current_user.id)
     pay_item
-    if @order_shipping.valid?
-       @order_shipping.save
+
+    if @order_shipping.valid? && @order.save
+       @item.mark_as_sold_out
        return redirect_to root_path
     else
       render :index

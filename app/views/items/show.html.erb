@@ -23,6 +23,7 @@
       </span>
     </div>
 
+
     <% if user_signed_in? %> 
     <%#= if user_signed_in?  # && !@item.sold_out? %>
     <% if current_user == @item.user %>
@@ -33,6 +34,8 @@
     <%= link_to "購入画面に進む", item_orders_path(@item) ,class: "item-red-btn" %>
     <% end %>
     <% end %>
+
+
 
        <div class="item-explain-box">
       <span><%= @item.comment %></span>
