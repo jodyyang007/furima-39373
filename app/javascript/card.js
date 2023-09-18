@@ -1,5 +1,5 @@
 const pay = () => {
-  const payjp = Payjp('pk_test_pk_test_f6ad51b7f5655791c68bdec9')
+  const payjp = Payjp('pk_test_678c4867d9c1184c2d994615')// PAY.JPテスト公開鍵
   const elements = payjp.elements();
   const numberElement = elements.create('cardNumber');
   const expiryElement = elements.create('cardExpiry');
@@ -18,10 +18,13 @@ const pay = () => {
       } else {
         const token = response.id;
         const renderDom = document.getElementById("charge-form");
-        const tokenObj = `<input value=${token} name='token'>`;
+        const tokenObj = `<input value=${token} type="hidden" name='token'>`;
         renderDom.insertAdjacentHTML("beforeend", tokenObj);
-        debugger;
-      }
+       }
+       numberElement.clear();
+       expiryElement.clear();
+       cvcElement.clear();
+      document.getElementById("charge-form").submit();
     });
   });
 };
