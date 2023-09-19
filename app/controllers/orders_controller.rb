@@ -1,4 +1,9 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :find_item, only: [:index, :create]
+
+
+  
   def index
     @item = Item.find(params[:item_id])
     @order = Order.new
@@ -10,6 +15,11 @@ class OrdersController < ApplicationController
     @order_shipping = OrderShipping.new(order_params)
     @order = Order.new(item_id: @item.id, user_id: current_user.id)
     pay_item
+
+    if current_user == @item.user
+      return redirect_to root_path
+    end
+
 
     if @order_shipping.valid? && @order.save
        @item.mark_as_sold_out
@@ -30,6 +40,34 @@ class OrdersController < ApplicationController
       currency: 'jpy'                
     )
     end
+
+
+    def show
+      @item = Item.find(params[:id])
+
+      if @item.sold_out?
+        redirect_to root_path
+      elsif current_user != @item.user
+        redirect_to new_user_session_path
+      end
+    end
+
+    def find_item
+      @item = Item.find(params[:item_id])
+    end
+
+
+ 
+
+
+    def find_item
+      @item = Item.find(params[:item_id])
+    end
+
+
+
+
+
 
     private
 
