@@ -8,8 +8,7 @@ end
 
 
 def show
-  @item = Item.find(params[:id])
-  if current_user != @item.user
+    if current_user != @item.user
     if @item.sold_out?
       redirect_to root_path
   end
@@ -17,9 +16,7 @@ end
 end
 
 def edit
-  @item = Item.find(params[:id])
-
-  if current_user != @item.user || @item.sold_out?
+   if current_user != @item.user || @item.sold_out?
     redirect_to root_path
   else
   end
