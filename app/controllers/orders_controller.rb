@@ -2,13 +2,18 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :find_item, only: [:index, :create]
 
-
   
   def index
     @item = Item.find(params[:item_id])
     @order = Order.new
     @order_shipping = OrderShipping.new
+
+  if current_user != @item.user || @item.sold_out?
+    redirect_to root_path
   end
+end
+
+
 
     def create
     @item = Item.find(params[:item_id])
@@ -18,17 +23,15 @@ class OrdersController < ApplicationController
 
     if current_user == @item.user
       return redirect_to root_path
-    end
-
-
-    if @order_shipping.valid? && @order.save
-       @item.mark_as_sold_out
-       return redirect_to root_path
+    elsif @order_shipping.valid? && @order.save
+      @item.mark_as_sold_out
+      redirect_to root_path
     else
       render :index
-     end
     end
+  end
     
+
     def pay_item
     Payjp.api_key = "sk_test_5fe4735ea4c3dd01b6331e40" 
 
@@ -45,29 +48,17 @@ class OrdersController < ApplicationController
     def show
       @item = Item.find(params[:id])
 
-      if @item.sold_out?
+    if @item.sold_out? || current_user != @item.user
         redirect_to root_path
       elsif current_user != @item.user
         redirect_to new_user_session_path
       end
     end
 
+    
     def find_item
       @item = Item.find(params[:item_id])
     end
-
-
- 
-
-
-    def find_item
-      @item = Item.find(params[:item_id])
-    end
-
-
-
-
-
 
     private
 
