@@ -28,7 +28,9 @@ end
     
 
     def pay_item
-    Payjp.api_key = "sk_test_5fe4735ea4c3dd01b6331e40" 
+    
+      Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    
 
     amount = @item.price
 
