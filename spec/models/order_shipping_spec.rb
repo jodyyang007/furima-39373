@@ -66,6 +66,20 @@ RSpec.describe OrderShipping, type: :model do
         expect(@order_shipping.errors.full_messages).to include('Phone number is invalid')
       end
 
+
+      it '9桁以下の電話番号で保存できない' do
+        @order_shipping.phone_number = '090'
+        @order_shipping.valid?
+        expect(@order_shipping.errors.full_messages).to include('Phone number is invalid')
+      end
+
+      it '12桁以上の電話番号で保存できない' do
+        @order_shipping.phone_number = '1234567890987'
+        @order_shipping.valid?
+        expect(@order_shipping.errors.full_messages).to include('Phone number is invalid')
+      end
+
+
       it 'item_id が空では保存できないこと' do
         @order_shipping.item_id = nil
         @order_shipping.valid?
