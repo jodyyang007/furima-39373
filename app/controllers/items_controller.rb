@@ -6,7 +6,6 @@ def index
   @items = Item.order(created_at: :desc)
 end
 
-
 def edit
   if current_user != @item.user|| @item.order.present? #|| @item.sold_out?
     redirect_to root_path

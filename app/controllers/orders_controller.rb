@@ -40,17 +40,7 @@ end
       currency: 'jpy'                
     )
     end
-
-
-    def show
-    if @item.sold_out? || current_user != @item.user
-        redirect_to root_path
-      elsif current_user != @item.user
-        redirect_to new_user_session_path
-      end
-    end
-
-    
+  
     def find_item
       @item = Item.find(params[:item_id])
     end
