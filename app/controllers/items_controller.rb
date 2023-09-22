@@ -7,16 +7,8 @@ def index
 end
 
 
-def show
-    if current_user != @item.user
-    if @item.sold_out?
-      redirect_to root_path
-  end
-end
-end
-
 def edit
-   if current_user != @item.user|| @item.order.present? #|| @item.sold_out?
+  if current_user != @item.user|| @item.order.present? #|| @item.sold_out?
     redirect_to root_path
   else
   end
