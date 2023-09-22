@@ -19,7 +19,6 @@ RSpec.describe OrderShipping, type: :model do
         @order_shipping.building_name = ''
         expect(@order_shipping).to be_valid
       end
-
     end
 
     context '住所保存できない場合' do
