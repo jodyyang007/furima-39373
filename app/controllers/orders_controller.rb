@@ -6,7 +6,7 @@ class OrdersController < ApplicationController
   def index
     @order = Order.new
     @order_shipping = OrderShipping.new
-    if current_user == @item.user || @item.sold_out?
+    if current_user == @item.user 
       redirect_to root_path
     end
 end
@@ -16,7 +16,7 @@ end
     @order = Order.new(item_id: @item.id, user_id: current_user.id)
     pay_item
 
-    if current_user == @item.user || @item.sold_out?
+    if current_user == @item.user
       return redirect_to root_path
     elsif @order_shipping.valid? && @order.save
       @item.mark_as_sold_out

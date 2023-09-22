@@ -7,7 +7,7 @@ def index
 end
 
 def edit
-  if current_user != @item.user|| @item.order.present? #|| @item.sold_out?
+  if current_user != @item.user|| @item.order.present?
     redirect_to root_path
   else
   end
