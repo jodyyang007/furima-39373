@@ -10,7 +10,7 @@ class OrderShipping
     validates :prefecture_id, numericality: {other_than: 0, message: "can't be blank"}
     validates :city
     validates :street_address
-    validates :phone_number, format: { with: /\A[0-9]{11}\z/ }
+    validates :phone_number, format: { with: /\A\d{10}\z|\A\d{11}\z/ }
     validates :item_id
     validates :user_id
 end
