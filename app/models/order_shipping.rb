@@ -2,7 +2,6 @@ class OrderShipping
   include ActiveModel::Model
   attr_accessor :postal_code, :prefecture_id, :city, :street_address, :building_name, :phone_number, :item_id, :user_id
   attr_accessor :token
-  validates :token, presence: true
   #belongs_to :order
 
   with_options presence: true do
@@ -13,6 +12,7 @@ class OrderShipping
     validates :phone_number, format: { with: /\A\d{10}\z|\A\d{11}\z/ }
     validates :item_id
     validates :user_id
+    validates :token
 end
 
 
