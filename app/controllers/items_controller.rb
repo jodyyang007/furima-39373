@@ -4,11 +4,12 @@ class ItemsController < ApplicationController
 
 def index 
   @items = Item.order(created_at: :desc)
-end 
-  
+end
+
 def edit
-  if current_user != @item.user
+  if current_user != @item.user|| @item.order.present?
     redirect_to root_path
+  else
   end
 end
 
@@ -40,26 +41,24 @@ end
 
 
 def destroy
-    if current_user == @item.user
-    if @item.destroy
-    redirect_to root_path
-    else
-      redirect_to item_path(@item)
-    end
+  if current_user == @item.user
+  if @item.destroy
+     redirect_to root_path
   else
     redirect_to item_path(@item)
   end
 end
+end
 
 
 
-
-# def purchase
-
-#   self.sold_out = true
- 
-# end
-
+def purchase
+  if perform_purchase
+  if @item.update(sold_out: true)
+    redirect_to root_path
+  end
+end
+end
 
   private
 
@@ -70,5 +69,6 @@ end
   def find_item
     @item = Item.find(params[:id])
   end
-   
+ 
+
 end
