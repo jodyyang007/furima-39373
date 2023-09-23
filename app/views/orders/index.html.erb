@@ -44,9 +44,7 @@
           <span class="indispensable">必須</span>
           <div id="number-form" class="input-default"></div>
         </div>
-        <%#= f.text_field :number, class:"input-default", id:"card-number", placeholder:"カード番号", maxlength:"16" %>
-
-        <div class='available-card'>
+         <div class='available-card'>
           <%= image_tag 'card-visa.gif', class: 'card-logo'%>
           <%= image_tag 'card-mastercard.gif', class: 'card-logo'%>
           <%= image_tag 'card-jcb.gif', class: 'card-logo'%>
@@ -60,7 +58,6 @@
           <div id="expiry-form" class="input-default"></div>
         </div>
         <div class='input-expiration-date-wrap'>
-         <%#= f.text_field :expiry, class:"input-default", id:"expiry_form", placeholder:"月/年" %>
         </div>
       </div>
       <div class="form-group">
@@ -69,7 +66,6 @@
           <span class="indispensable">必須</span>
           <div id="cvc-form" class="input-default"></div>
         </div>
-        <%#= f.text_field :cvc, class:"input-default", id:"card-cvc", placeholder:"CVC", maxlength:"4" %>
       </div>
     </div>
     <%# /カード情報の入力 %>

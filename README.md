@@ -32,6 +32,7 @@
 | comment               | text       | null: false                    |
 | user                  | references | null: false,foreign_key: true  |
 | price                 | integer    | null: false                    |
+| sold_out              | boolean                                     |
 
 
 ### Association
